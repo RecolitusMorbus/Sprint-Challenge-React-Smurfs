@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
-
+import styled from 'styled-components';
 import Smurf from './Smurf';
+
+const VillagePeople = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const ModifiedList = styled.ul`
+  padding: 0;
+`;
 
 class Smurfs extends Component {
   render() {
     return (
-      <div className="Smurfs">
+      <VillagePeople>
         <h1>Smurf Village</h1>
-        <ul>
+        <ModifiedList>
           {this.props.smurfs.map(smurf => {
             return (
               <Smurf
@@ -19,14 +29,14 @@ class Smurfs extends Component {
               />
             );
           })}
-        </ul>
-      </div>
+        </ModifiedList>
+      </VillagePeople>
     );
   }
 }
 
 Smurf.defaultProps = {
- smurfs: [],
+  smurfs: [],
 };
 
 export default Smurfs;
