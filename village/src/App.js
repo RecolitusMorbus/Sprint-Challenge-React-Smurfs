@@ -1,9 +1,24 @@
 import React, { Component } from 'react';
 import { Route, Link, withRouter } from 'react-router-dom';
 import axios from 'axios';
-import './App.css';
+import styled from 'styled-components';
 import SmurfForm from './components/SmurfForm';
 import Smurfs from './components/Smurfs';
+
+const NavRafter = styled.div`
+  height: 40px;
+  width: 200px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  font-color: #466a80;
+`;
+
+const CenterStage = styled.div`
+  display: flex;
+  justify-content: center;
+  background-color: #cccccc;
+`;
 
 class App extends Component {
   constructor(props) {
@@ -42,14 +57,15 @@ class App extends Component {
   render() {
     console.log(this.props)
     return (
-      <div className="App">
-        <Link to='/smurf-form'>Form</Link>
+      <CenterStage>
+        <NavRafter>
+          <Link to='/smurf-form'>Form</Link>
+          <Link to='/'>Smurfs</Link>
+        </NavRafter>
         <br/>
-        <Link to='/'>Smurfs</Link>
-        <br/><br/>
         <Route exact path='/' render={() => <Smurfs smurfs={this.state.smurfs} />} />
         <Route path='/smurf-form' render={() => <SmurfForm addSmurf={this.addSmurf} />} />
-      </div>
+      </CenterStage>
     );
   }
 }
